@@ -1,6 +1,12 @@
 const JSKhanSocket = {
+		verifica: function(ob, val, func){
+			var obj = $(ob).html();
+			if(obj.indexOf(val) == -1){
+				func();
+			}
+		},
 		receber: function(name, call){
-			for(var i = 0; i < 100000; i++){
+			for(var i = 0; i < 14400; i++){
 				setTimeout(function(){
 					$.ajax({
 						url: "JSKhan/JSKhanSocket.php",
@@ -15,7 +21,7 @@ const JSKhanSocket = {
 								}
 						}
 	 		 		});
-				}, 5000 * i);
+				}, 2000 * i);
 			}
 		},
 		enviar: function(name, dat, cbk){
@@ -32,4 +38,5 @@ const JSKhanSocket = {
 				}, 1000 * i);
 			}
 		}
+
 	};
