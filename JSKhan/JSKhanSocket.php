@@ -1,6 +1,14 @@
 <?php  
 
+	ob_start("ob_gzhandler");
+
 	if(isset($_REQUEST['tp']) && $_REQUEST['tp'] == 'enviar' && file_exists('sockets/'.base64_encode($_REQUEST['s']).'.php')){
+
+		include 'sockets/'.base64_encode($_REQUEST['s']).'.php';
+		if(count($arrays) == 25){
+			file_put_contents('sockets/'.base64_encode($_REQUEST['s']).'.php','');
+		}
+
 		$array = $_REQUEST['da'];
 		$datea = '';
 		if(count($array) > 1){
@@ -102,4 +110,7 @@
 			echo json_encode($array);
 		}
 	}
+
+	ob_flush();
+	
 ?>
