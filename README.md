@@ -30,7 +30,7 @@ __________________________________________________________
 __________________________________________________________
 ## Page JSKhanSocket.min.js Example
 ```javascript
-// O NOME DA VAR SEMPRE TEM QUE SER Khan
+// O NOME DA VAR SEMPRE TEM QUE SER JSKhanSocket
       var socket = JSKhanSocket;
       
       socket.enviar('nome do socket', dados , function(retorno){
@@ -42,7 +42,7 @@ __________________________________________________________
           $.each(d, function(index,value){
              retorna valores do socket em while
              socket.verifica('id aonde sera inserido os dados para nao repetir', valor pra nao repetir, function(){
-                                                                                  funçao callback para nao repetir os dados                                                                                
+                                                                                                        funçao callback para nao repetir os dados                                                                                
              });
           }
       });
