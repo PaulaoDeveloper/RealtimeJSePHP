@@ -5,11 +5,14 @@
 	<title>Document</title>
 	<meta name="viewport" content="initial-scale=1, maximum-scale=1">
 	<style>
-		*{padding:0;margin:0}body{width:100%;height:100vh;background:#1abc9c;display:flex;justify-content:center;align-items:center;flex-direction:column}.container{width:50%;height:100vh;display:none}.container input{width:48.5%;height:45px;border:none;position:fixed;top:560px;padding-left:20px;font-size:20px;font-weight:700}#msgs{width:100%;height:550px;display:flex;justify-content:flex-end;align-items:center;background:#e74c3c;margin-bottom:70px;border-top-left-radius:5px;border-top-right-radius:5px}#msgs-body{height:90%;width:100%;overflow-y:scroll;text-align:center;padding-bottom:20px;padding-top:20px;margin-bottom:5px}#msgs-body-m{width:90%;height:60px;background:#2980b9;border-radius:5px;margin-top:10px;margin-left:20px;padding-left:20px;font-size:17px;display:flex;justify-content:flex-start;align-items:center;text-transform:capitalize;font-weight:700;font-family:'Helvetica',sans-serif}#msgs-body-m img{width:60px;height:100%;border-radius:100%;margin-right:30px}@media (max-width: 425px){#msgs{height:80vh}.container input{position:fixed;top:80vh;width:100%}#bottom{position:fixed;top:92vh}.container{width:100%}#msgs-body{height:80%}#msgs-body-m{width:85%}}.container-login{width:50%;height:100vh;background:#8e44ad;display:flex;justify-content:center;align-items:center;flex-direction:column}#login-input{width:65%;height:60px;padding-left:15px;border:none;font-size:20px}.icons-escolhe,.icons-escolhe>div{width:65%;height:20vh;display:flex;justify-content:center;align-items:center}.icons-escolhe>div>img{width:33.33%;height:50%;margin-top:20px;border-radius:100%}.container-login button{width:65%;height:65px;border:none;font-size:20px;margin-top:20px}
+		*{padding:0;margin:0}body{width:100%;height:100vh;background:#1abc9c;display:flex;justify-content:center;align-items:center;flex-direction:column}.container{width:50%;height:100vh;display:none}.container input{width:48.5%;height:45px;border:none;position:fixed;top:560px;padding-left:20px;font-size:17px;}#msgs{width:100%;height:550px;display:flex;justify-content:flex-end;align-items:center;background:#eee;margin-bottom:70px;}#msgs-body{height:90%;width:100%;overflow-y:scroll;padding-bottom:20px;padding-top:20px;margin-bottom:5px}#msgs-body-m{width:90%;height:auto;background:#008080;color:#fff;border-radius:5px;margin-top:10px;margin-left:20px;padding-left:20px;font-size:17px;display:flex;justify-content:flex-start;align-items:center;font-weight:700;font-family:'Helvetica',sans-serif;overflow-x:hidden}#msgs-body-m img{width:60px;height:100%;border-radius:100%;margin-right:30px;margin-left: 30px;padding-top:15px;}h4{padding-bottom:15px;}@media (max-width: 425px){#msgs{height:80vh}.container input{position:fixed;top:80.5vh;width:100%}#bottom{position:fixed;top:92vh}.container{width:100%}#msgs-body{height:80%}#msgs-body-m{width:85%}}.container-login{width:50%;height:100vh;background:#8e44ad;display:flex;justify-content:center;align-items:center;flex-direction:column}#login-input{width:65%;height:60px;padding-left:15px;border:none;font-size:20px}.icons-escolhe,.icons-escolhe>div{width:65%;height:20vh;display:flex;justify-content:center;align-items:center}.icons-escolhe>div>img{width:33.33%;height:50%;margin-top:20px;border-radius:100%}.container-login button{width:65%;height:65px;border:none;font-size:20px;margin-top:20px}@media (max-width: 425px){.container-login{width: 100%}#bugou{position:absolute;top:10px;}#msgs-body{margin-top:45px}}.gerado{padding-left:0;text-align:center;width:63% !important;background:#2c3e50;color:#ecf0f1;border-radius:3px}button{cursor:pointer}input{cursor:text}#temp{width:100%;font-size:12px !important;height:auto;text-align:right;margin-top:15px;font-weight:bold}#mensa-gem{width:80%;height: auto;margin-top:20px;padding:15px;font-size:17px !important;font-weight: normal !important;}#userm{text-align:center;}#bugou{width:60px;height:60px;position:absolute;left:150px;cursor:pointer;display:none}
 	</style>
 </head>
 <body>
-
+  <img src="http://image.flaticon.com/icons/svg/179/179540.svg" id="bugou"/>
+  <audio controls style="display:none">
+	<source src="https://pedroh.000webhostapp.com/src/toque.mp3" type="audio/mp3">
+</audio>
   <div class="container-login">
   	<input type="text" id="login-input">
   	<div class="icons-escolhe">
@@ -24,7 +27,9 @@
   		<img src="http://image.flaticon.com/icons/svg/163/163812.svg" alt="">
   	</div>
   	</div>
-  	<button id="logar">Logar</button>
+  	<button id="logar">Logar</button><br/>
+  	<button id="gerar" style="background:#2980b9;color:#ecf0f1">Gerar Canal</button><br/>
+  	<input type="text" id="login-input" class="gerado" style="display:none" disabled>
   </div>
 
   <div class="container">
@@ -33,52 +38,11 @@
 			
 		</div>
 	</div>
-<input type="text" name="">
+<input type="text" name="" placeholder="Envie sua mensagem">
 <div style="width: 100%;height: 45px;background:#2980b9;border-radius:3px;display:flex;justify-content:center;align-items:center;font-size:1.1em;font-family: 'Roboto', sans-serif;color:#fff;cursor:pointer;/* width: inherit; */font-weight: bold;margin-top: -10px" id="bottom">Enviar</div>
 </div>
 	<script src="JSKhan/jquery.js"></script>
 	<script type="text/javascript" src="JSKhan/JSKhanSocket.min.js"></script>
-	<script>
-	var nome, img;
-	$('body>div.container-login>div>div>img').on('click', function(){
-		if(typeof img == 'undefined'){
-			img = $(this).attr('src');
-			$(this).css('border','3px solid blue');
-		}
-	});
-	$('#logar').on('click', function(){
-		if($('.container-login>input').val().length > 2){
-			nome = $('body>div.container-login>input').val();
-			$('body>div.container-login').hide();
-			$('body>div.container').show();
-		}
-	});
-	/*var nome = prompt('Qual e seu nome');
-	if(nome.length <= 2){
-		nome = prompt('Opaa o nome é Ogrigatorio Amigo !');
-	}*/
-	var socket = JSKhanSocket;
-	socket.receber('canal do pedro', function(data){
-		var d = data['canal do pedro'];
-		$.each(d, function(index, value){
-			socket.verifica('#msgs-body', value[1], function(){
-				$("#msgs-body").append('<div id="msgs-body-m"><img src="'+value[2]+'"/>'+ value[0] +' : '+ value[1] +'</div>');
-				$("#msgs-body").animate({scrollTop: $('#msgs-body')[0].scrollHeight}, 500);
-			});
-		});
-	});
-	$("#bottom").on('click', function(){
-		if($(".container>input").val().length > 3){
-			var antiFlood = $("#msgs-body").html();
-			if(antiFlood.indexOf($(".container>input").val()) == -1){
-				socket.enviar('canal do pedro', [nome,$(".container>input").val(), img], function(cb){
-				var dtd = (cb == 'sucesso') ? 'Enviado Ao Socket Com Sucesso' : 'Erro ao Enviar Ao Socket';
-				console.log(dtd);
-				$(".container>input").val('');
-				});}else{
-				$(".container>input").val('');
-				console.log("Anti Flood");
-				$(".container>input").attr('placeholder','Opaa , Sem Flood !');}}});
-	</script>
+	<script type="text/javascript" src="src/chat.min.js"></script>
 </body>
 </html>
