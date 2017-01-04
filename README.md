@@ -41,7 +41,7 @@ __________________________________________________________
           var d = data['nome do socket'];
           $.each(d, function(index,value){
              retorna valores do socket em while
-             socket.verifica('id aonde sera inserido os dados para nao repetir', valor pra nao repetir, function(){
+             socket.verifica('#id aonde sera inserido os dados para nao repetir', valor pra nao repetir, function(){
                                                                                                         funçao callback para nao repetir os dados                                                                                
              });
           }
